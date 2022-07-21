@@ -151,7 +151,8 @@ export default {
 
                 this.axios
                     // .post("https://bigger.web.id/api/auth/login", this.inputan)
-                    .post("http://localhost:8000/api/auth/login",  this.inputan )
+                    // .post("http://localhost:8000/api/auth/login",  this.inputan )
+                    .post("https://bigger.genossys.com/api/auth/login",  this.inputan )
                     .then(
                         response => {
                             console.log(response);

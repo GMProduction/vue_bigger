@@ -52,8 +52,9 @@ const store = new Vuex.Store({
     state: {
         count: 1,
         biggertoken: localStorage.getItem("biggerToken"),
-        apiUrl: "http://localhost:8000/api/v1/"
+        // apiUrl: "http://localhost:8000/api/v1/"
         // apiUrl: "https://bigger.web.id/api/v1/"
+        apiUrl: "https://bigger.genossys.com/api/v1/"
     },
     mutations: {
         // setToken(state, value) {
