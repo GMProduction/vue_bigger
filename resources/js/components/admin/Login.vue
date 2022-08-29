@@ -150,35 +150,26 @@ export default {
                 this.inputan.password = this.password;
 
                 this.axios
-                    // .post("https://bigger.web.id/api/auth/login", this.inputan)
-                    // .post("http://localhost:8000/api/auth/login",  this.inputan )
                     .post("https://bigger.genossys.com/api/auth/login",  this.inputan )
                     .then(
                         response => {
                             console.log(response);
 
                             if (response.status === 200) {
-                                // this.alertMessage = response["data"]["msg"];
-                                // this.berhasilSimpan();
-                                // this.$refs.alertSuccess.showAlert();
-                                // alert(response["data"]["access_token"]);
+
                                 this.updateToken(
                                     response["data"]["access_token"]
                                 );
                                 window.location.replace("/admin/dashboard");
                             } else {
-                                // throw error and go to catch block
-                                alert("error bos");
-                                // this.inputError = "Gagal input data";
+                                alert("error");
                             }
                         }
-                        // console.log(response.data)
                     )
                     .catch(error => {
                         console.log(error);
                         alert("Email atau password tidak terdaftar");
                         this.inputLoading = false;
-                        // this.inputError = "Gagal input data";
                     })
                     .finally(() => {
                         this.inputLoading = false;

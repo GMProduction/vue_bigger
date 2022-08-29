@@ -144,7 +144,7 @@
                                         <v-icon dark>mdi-printer</v-icon>
                                     </v-btn>
 
-                                   
+
                                 </template>
                 <template v-slot:body.append></template>
               </v-data-table>
@@ -397,7 +397,7 @@ export default {
   },
 
   computed: {
-   
+
     headersPembayaran() {
       return [
         // {
@@ -418,10 +418,10 @@ export default {
           text: 'Tanggal',
           value: 'created_at',
         },
-          {
-          text: 'Akun',
-          value: 'akun',
-        },
+        //   {
+        //   text: 'Akun',
+        //   value: 'akun',
+        // },
 
         {
                     text: "Actions",
