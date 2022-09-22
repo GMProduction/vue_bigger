@@ -58,12 +58,7 @@
               </v-date-picker>
             </v-menu>
 
-            <!-- <a>Akun:</a>
-            <v-radio-group row v-model="akun" mandatory>
-              <v-radio label="All" value=""></v-radio>
-              <v-radio label="B" value="b"></v-radio>
-              <v-radio label="R" value="r"></v-radio>
-            </v-radio-group> -->
+
           </div>
 
           <Button
