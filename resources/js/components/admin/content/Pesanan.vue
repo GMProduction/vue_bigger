@@ -836,7 +836,6 @@ export default {
                         console.log("key " + key);
                         console.log("val " + val['id']);
                         myMap[val['id']] = val;
-
                     });
 
                     this.mapItemsJenisBarang = myMap
