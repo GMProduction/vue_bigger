@@ -11,12 +11,12 @@
             <Button
               :icondepan="'mdi-filter-outline'"
               text="Filter"
-              style="height: 40px;"
+              style="height: 40px"
               :bg-color="'bg-warning'"
               class="ml-2"
             ></Button>
           </template>
-          <div class="p-2" style="width: 300px;">
+          <div class="p-2" style="width: 300px">
             <a>Periode:</a>
             <v-menu
               ref="menutanggal"
@@ -27,7 +27,7 @@
               offset-y
               min-width="auto"
             >
-              <template v-slot:activator="{ on, attrs }" style="padding: 0;">
+              <template v-slot:activator="{ on, attrs }" style="padding: 0">
                 <v-text-field
                   v-model="lapTanggal"
                   label="Tanggal"
@@ -42,15 +42,13 @@
               </template>
               <v-date-picker v-model="lapTanggal" no-title scrollable range>
                 <v-spacer></v-spacer>
-                <v-btn text color="primary" @click="menutanggal = false">
-                  Cancel
-                </v-btn>
+                <v-btn text color="primary" @click="menutanggal = false"> Cancel </v-btn>
                 <v-btn
                   text
                   color="primary"
                   @click="
-                    $refs.menutanggal.save(lapTanggal)
-                    loadDataPembayaran()
+                    $refs.menutanggal.save(lapTanggal);
+                    loadDataPembayaran();
                   "
                 >
                   OK
@@ -68,20 +66,19 @@
 
           <Button
             @click.native="loadDataPembayaran()"
-            text="Cari"
-            style="height: 40px;"
+            text="Cari y"
+            style="height: 40px"
             :bg-color="'bg-success'"
             class="ml-2 mb-2 mr-2"
           ></Button>
         </b-dropdown>
 
-
-        <div style="padding: 0.375rem 0;">
+        <div style="padding: 0.375rem 0">
           <Button
             @click.native="showTambahData"
             :icondepan="'mdi-printer'"
             text="Cetak"
-            style="height: 40px;"
+            style="height: 40px"
             :bg-color="'bg-success'"
             class="ml-2"
           ></Button>
@@ -91,11 +88,7 @@
         <v-col cols="12">
           <div class="card-table">
             <div v-if="loading" class="text-center m-5">
-              <b-spinner
-                variant="primary"
-                label="Text Centered"
-                class="mb-3"
-              ></b-spinner>
+              <b-spinner variant="primary" label="Text Centered" class="mb-3"></b-spinner>
               <p>Tunggu Sebentar Ya...</p>
             </div>
             <div v-else-if="errored">
@@ -122,30 +115,28 @@
                   {{ formatPrice(item.nominal) }}
                 </template>
 
-<template v-slot:item.created_at="{ item }">
-    <span>{{ new Date(item.created_at).toLocaleString() }}</span>
-  </template>
-               <template v-slot:item.actions="{ item }">
-                                    <v-btn
-                                        x-small
-                                        class="mx-1"
-                                        fab
-                                        dark
-                                        color="warning"
-                                        @click="
-                                            generateReport(
-                                                item.id,
-                                                item.id_pesanan,
-                                                item.nominal,
-                                                item.created_at
-                                            )
-                                        "
-                                    >
-                                        <v-icon dark>mdi-printer</v-icon>
-                                    </v-btn>
-
-
-                                </template>
+                <template v-slot:item.created_at="{ item }">
+                  <span>{{ new Date(item.created_at).toLocaleString() }}</span>
+                </template>
+                <template v-slot:item.actions="{ item }">
+                  <v-btn
+                    x-small
+                    class="mx-1"
+                    fab
+                    dark
+                    color="warning"
+                    @click="
+                      generateReport(
+                        item.id,
+                        item.id_pesanan,
+                        item.nominal,
+                        item.created_at
+                      )
+                    "
+                  >
+                    <v-icon dark>mdi-printer</v-icon>
+                  </v-btn>
+                </template>
                 <template v-slot:body.append></template>
               </v-data-table>
 
@@ -169,7 +160,6 @@
       </v-row>
     </v-app>
 
-
     <vue-html2pdf
       :show-layout="false"
       :float-layout="true"
@@ -191,24 +181,16 @@
           <div>
             <img :src="'/img/kop.jpg'" class="w-100" />
           </div>
-          <div style="margin-left: 30px; margin-right: 50px; margin-top: 30px;">
+          <div style="margin-left: 30px; margin-right: 50px; margin-top: 30px">
             <v-row>
               <v-col cols="3">
                 <p>Nomor</p>
-                <v-text-field
-                  dense
-                  class="rounded-lg"
-                  :value="id"
-                ></v-text-field>
+                <v-text-field dense class="rounded-lg" :value="id"></v-text-field>
               </v-col>
 
               <v-col cols="3">
                 <p>Tanggal</p>
-                <v-text-field
-                  dense
-                  class="rounded-lg"
-                  :value="kTanggal"
-                ></v-text-field>
+                <v-text-field dense class="rounded-lg" :value="kTanggal"></v-text-field>
               </v-col>
 
               <v-col cols="4" offset="2">
@@ -244,20 +226,18 @@
                 <p
                   v-if="kStatus == 'Lunas'"
                   class="mr-2 text-success"
-                  style="margin-bottom: 0;"
+                  style="margin-bottom: 0"
                 >
                   {{ kStatus }}
                 </p>
 
-                <p v-else class="mr-2" style="margin-bottom: 0;">
+                <p v-else class="mr-2" style="margin-bottom: 0">
                   {{ kStatus }}
                 </p>
               </v-col>
 
               <v-col cols="2" offset="4">
-                <p class="text-right mr-2" style="margin-bottom: 0;">
-                  Sub Total
-                </p>
+                <p class="text-right mr-2" style="margin-bottom: 0">Sub Total</p>
               </v-col>
 
               <v-col cols="2">
@@ -273,9 +253,7 @@
 
             <v-row>
               <v-col cols="2" offset="8">
-                <p class="text-right mr-2" style="margin-bottom: 0;">
-                  Diskon
-                </p>
+                <p class="text-right mr-2" style="margin-bottom: 0">Diskon</p>
               </v-col>
 
               <v-col cols="2">
@@ -291,9 +269,7 @@
 
             <v-row>
               <v-col cols="2" offset="8">
-                <p class="text-right mr-2" style="margin-bottom: 0;">
-                  Total
-                </p>
+                <p class="text-right mr-2" style="margin-bottom: 0">Total</p>
               </v-col>
 
               <v-col cols="2">
@@ -314,11 +290,11 @@
 </template>
 
 <script>
-import Button from './component/Button.vue'
-import { validationMixin } from 'vuelidate'
-import { required, maxLength, numeric } from 'vuelidate/lib/validators'
-import AlertSuccess from './component/alert/AlertSuccess.vue'
-import VueHtml2pdf from 'vue-html2pdf'
+import Button from "./component/Button.vue";
+import { validationMixin } from "vuelidate";
+import { required, maxLength, numeric } from "vuelidate/lib/validators";
+import AlertSuccess from "./component/alert/AlertSuccess.vue";
+import VueHtml2pdf from "vue-html2pdf";
 
 export default {
   mixins: [validationMixin],
@@ -334,7 +310,7 @@ export default {
   },
 
   mounted() {
-    this.loadDataPembayaran()
+    this.loadDataPembayaran();
   },
 
   data() {
@@ -348,7 +324,7 @@ export default {
       menutanggal: false,
       inputPencarian: {},
       totalPembayaran: null,
-        akun: '',
+      akun: "",
 
       //PESANAN
       tablePesanan: [],
@@ -378,26 +354,25 @@ export default {
       inputError: null,
       show: true,
       showAlert: false,
-      alertMessage: '',
+      alertMessage: "",
       judulModal: null,
       jenisHapus: null,
-      search: '',
+      search: "",
       submitStatus: null,
       namaKwitansi: null,
 
-      valueWhenIsEmpty: '',
+      valueWhenIsEmpty: "",
       options: {
-        locale: 'id-ID',
+        locale: "id-ID",
         length: 11,
         precision: 0,
       },
 
       //TEST
-    }
+    };
   },
 
   computed: {
-
     headersPembayaran() {
       return [
         // {
@@ -407,16 +382,16 @@ export default {
         //     value: "pelanggan.nama_pelanggan"
         // },
         {
-          text: 'Nama',
-          value: 'nama_pelanggan',
+          text: "Nama",
+          value: "nama_pelanggan",
         },
         {
-          text: 'Nominal',
-          value: 'nominal',
+          text: "Nominal",
+          value: "nominal",
         },
-  {
-          text: 'Tanggal',
-          value: 'created_at',
+        {
+          text: "Tanggal",
+          value: "created_at",
         },
         //   {
         //   text: 'Akun',
@@ -424,66 +399,66 @@ export default {
         // },
 
         {
-                    text: "Actions",
-                    value: "actions",
-                    sortable: false,
-                    align: "center"
-                }
-      ]
+          text: "Actions",
+          value: "actions",
+          sortable: false,
+          align: "center",
+        },
+      ];
     },
 
     headersKeranjang() {
       return [
         {
-          text: 'Jenis Barang',
-          value: 'jenis_barang.nama',
+          text: "Jenis Barang",
+          value: "jenis_barang.nama",
         },
         {
-          text: 'Ukuran',
-          value: 'ukuran',
+          text: "Ukuran",
+          value: "ukuran",
         },
         {
-          text: 'Qty',
-          value: 'qty',
+          text: "Qty",
+          value: "qty",
         },
         {
-          text: 'Status Pengerjaan',
-          value: 'status_pengerjaan',
+          text: "Status Pengerjaan",
+          value: "status_pengerjaan",
         },
 
         {
-          text: 'Total',
-          value: 'total',
+          text: "Total",
+          value: "total",
         },
         {
-          text: 'Catatan',
-          value: 'catatan',
+          text: "Catatan",
+          value: "catatan",
         },
-      ]
+      ];
     },
 
     headersKwitansi() {
       return [
         {
-          text: 'Deskripsi',
-          value: 'deskripsi',
+          text: "Deskripsi",
+          value: "deskripsi",
         },
 
         {
-          text: 'Qty',
-          value: 'qty',
+          text: "Qty",
+          value: "qty",
         },
 
         {
-          text: 'Biaya Tambahan',
-          value: 'biayaTambahan',
+          text: "Biaya Tambahan",
+          value: "biayaTambahan",
         },
 
         {
-          text: 'Total',
-          value: 'total',
+          text: "Total",
+          value: "total",
         },
-      ]
+      ];
     },
   },
 
@@ -491,156 +466,152 @@ export default {
     //ETC
 
     formatPrice(value) {
-      let val = (value / 1).toFixed(0).replace('.', ',')
-      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+      let val = (value / 1).toFixed(0).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     },
 
     generateReport(id, idPesanan, pemNominal, kTanggal) {
-      let tempTableKeranjang = []
-      this.id = id
-      this.idPesanan = idPesanan
-      this.pemNominal = pemNominal
+      let tempTableKeranjang = [];
+      this.id = id;
+      this.idPesanan = idPesanan;
+      this.pemNominal = pemNominal;
       // this.kTanggal = kTanggal
 
       const months = [
-        'Januari',
-        'Februari',
-        'Maret',
-        'April',
-        'Mei',
-        'Juni',
-        'Juli',
-        'Agustus',
-        'September',
-        'Oktober',
-        'November',
-        'Desember',
-      ]
-      let current_datetime = new Date(kTanggal)
+        "Januari",
+        "Februari",
+        "Maret",
+        "April",
+        "Mei",
+        "Juni",
+        "Juli",
+        "Agustus",
+        "September",
+        "Oktober",
+        "November",
+        "Desember",
+      ];
+      let current_datetime = new Date(kTanggal);
       this.kTanggal =
         current_datetime.getDate() +
-        ' ' +
+        " " +
         months[current_datetime.getMonth()] +
-        ' ' +
-        current_datetime.getFullYear()
+        " " +
+        current_datetime.getFullYear();
       // this.kTanggal = new Date(kTanggal).toString("MMMM yyyy");
 
-      this.namaKwitansi = 'kwitansi bigger ' + id
+      this.namaKwitansi = "kwitansi bigger " + id;
       this.axios
-        .get(this.$store.state.apiUrl + 'pesanan/showPesananID/' + idPesanan, {
+        .get(this.$store.state.apiUrl + "pesanan/showPesananID/" + idPesanan, {
           headers: {
-            Authorization: 'Bearer ' + this.$store.state.biggertoken,
+            Authorization: "Bearer " + this.$store.state.biggertoken,
           },
         })
         .then((response) => {
-          $.each(response.data.data, function (
-            dataKeranjang,
-            valueDataKeranjang,
-          ) {
-            let eachITem = valueDataKeranjang
-            let catatan = ' '
+          $.each(response.data.data, function (dataKeranjang, valueDataKeranjang) {
+            let eachITem = valueDataKeranjang;
+            let catatan = " ";
 
             if (valueDataKeranjang.catatan != null) {
-              catatan = valueDataKeranjang.catatan
+              catatan = valueDataKeranjang.catatan;
             }
 
             let deskripsi =
               valueDataKeranjang.jenis_barang.nama +
-              ' (' +
+              " (" +
               valueDataKeranjang.ukuran +
-              ' ' +
+              " " +
               valueDataKeranjang.jenis_barang.satuan +
-              ') ' +
-              catatan
-            eachITem['deskripsi'] = deskripsi
-            tempTableKeranjang.push(eachITem)
-          })
-          this.tabelKwitansi = tempTableKeranjang
+              ") " +
+              catatan;
+            eachITem["deskripsi"] = deskripsi;
+            tempTableKeranjang.push(eachITem);
+          });
+          this.tabelKwitansi = tempTableKeranjang;
 
-          console.log('tabelKwitansi ', response.data)
-          this.kSubTotal = response.data.subTotal
-          this.kDiskon = response.data.dataPesanan.diskon
-          this.kTotal = response.data.dataPesanan.total_biaya
-          this.kTerimaDari = response.data.dataPesanan.pelanggan.nama_pelanggan
+          console.log("tabelKwitansi ", response.data);
+          this.kSubTotal = response.data.subTotal;
+          this.kDiskon = response.data.dataPesanan.diskon;
+          this.kTotal = response.data.dataPesanan.total_biaya;
+          this.kTerimaDari = response.data.dataPesanan.pelanggan.nama_pelanggan;
 
-          if (response.data.dataPesanan.status_bayar == 'lunas') {
-            this.kStatus = 'Lunas'
+          if (response.data.dataPesanan.status_bayar == "lunas") {
+            this.kStatus = "Lunas";
           } else {
-            this.kStatus = 'Belum Lunas'
+            this.kStatus = "Belum Lunas";
           }
 
-          this.$refs.html2Pdf.generatePdf()
+          this.$refs.html2Pdf.generatePdf();
         })
         .catch((error) => {
-          console.log(error)
-          this.errored = true
+          console.log(error);
+          this.errored = true;
         })
         .finally(() => {
-          this.loading = false
-        })
+          this.loading = false;
+        });
     },
 
     filterOnlyCapsText(value, search, item) {
       return (
         value != null &&
         search != null &&
-        typeof value === 'string' &&
+        typeof value === "string" &&
         value.toString().toLocaleLowerCase().indexOf(search) !== -1
-      )
+      );
     },
 
     loadDataPembayaran() {
-      this.inputPencarian.lapTanggal = this.lapTanggal
-      this.inputPencarian.akun = this.akun
+      this.inputPencarian.lapTanggal = this.lapTanggal;
+      this.inputPencarian.akun = this.akun;
 
-        console.log("ini akun: "+this.akun);
+      console.log("ini akun: " + this.akun);
       this.axios
         .post(
-          this.$store.state.apiUrl + 'pembayaran/pencarianLaporan',
+          this.$store.state.apiUrl + "pembayaran/pencarianLaporan",
           this.inputPencarian,
           {
             headers: {
-              Authorization: 'Bearer ' + this.$store.state.biggertoken,
+              Authorization: "Bearer " + this.$store.state.biggertoken,
             },
-          },
+          }
         )
         .then((response) => {
-          console.log("akunya: "+JSON.stringify(response.data.akunnya))
-          this.tablePembayaran = response.data.pembayaran
-          this.totalPembayaran = response.data.total
+          console.log("akunya: " + JSON.stringify(response.data.akunnya));
+          this.tablePembayaran = response.data.pembayaran;
+          this.totalPembayaran = response.data.total;
         })
         .catch((error) => {
-          console.log(error)
-          this.errored = true
+          console.log(error);
+          this.errored = true;
         })
         .finally(() => {
-          this.loading = false
-        })
+          this.loading = false;
+        });
     },
-
 
     //KERANJANG
     loadDataKeranjang() {
-      let tempUrl = 'keranjang/showKeranjangbyID/' + this.idPesanan
+      let tempUrl = "keranjang/showKeranjangbyID/" + this.idPesanan;
 
       this.axios
         .get(this.$store.state.apiUrl + tempUrl, {
           headers: {
-            Authorization: 'Bearer ' + this.$store.state.biggertoken,
+            Authorization: "Bearer " + this.$store.state.biggertoken,
           },
         })
         .then((response) => {
-          console.log('data keranjang', response.data['data'])
-          this.tabelKeranjang = response.data['data']
+          console.log("data keranjang", response.data["data"]);
+          this.tabelKeranjang = response.data["data"];
         })
         .catch((error) => {
-          console.log(error)
-          this.errored = true
+          console.log(error);
+          this.errored = true;
         })
-        .finally(() => (this.loading = false))
+        .finally(() => (this.loading = false));
     },
   },
-}
+};
 </script>
 
 <style>
