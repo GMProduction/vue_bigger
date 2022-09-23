@@ -66,7 +66,7 @@
 
           <Button
             @click.native="loadDataPembayaran()"
-            text="Cari y"
+            text="Cari"
             style="height: 40px"
             :bg-color="'bg-success'"
             class="ml-2 mb-2 mr-2"
